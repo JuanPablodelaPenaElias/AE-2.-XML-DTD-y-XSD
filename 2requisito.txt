@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Definición de tipos complejos -->
+
+  <xs:complexType name="CapituloType">
+    <xs:sequence>
+      <xs:element name="titulo" type="xs:string"/>
+      <xs:element name="contenido" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="num_paginas" type="xs:integer"/>
+  </xs:complexType>
+
+  <xs:complexType name="LibroType">
+    <xs:sequence>
+      <xs:element name="titulo" type="xs:string"/>
+      <xs:element name="capitulos">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="capitulo" type="CapituloType" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="indice" type="xs:string"/>
+      <xs:element name="sinopsis" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="num_paginas" type="xs:integer"/>
+    <xs:attribute name="id" type="xs:string"/>
+    <xs:attribute name="tipo_clase" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="RevistaType">
+    <xs:sequence>
+      <xs:element name="titulo" type="xs:string"/>
+      <xs:element name="numero" type="xs:integer"/>
+      <xs:element name="indice" type="xs:string"/>
+      <xs:element name="secciones">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="seccion">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="contenido" type="xs:string"/>
+                </xs:sequence>
+                <xs:attribute name="tipo" type="xs:string"/>
+                <xs:attribute name="num_paginas" type="xs:integer"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string"/>
+    <xs:attribute name="tipo_clase" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="ArticuloType">
+    <xs:sequence>
+      <xs:element name="contenido" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="autor" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="PeriodicoType">
+    <xs:sequence>
+      <xs:element name="secciones">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="seccion">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="articulo" type="ArticuloType"/>
+                </xs:sequence>
+                <xs:attribute name="tipo" type="xs:string"/>
+                <xs:attribute name="num_paginas" type="xs:integer"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="indice" type="xs:string"/>
+    </
+  </xs:sequence>
+  <xs:attribute name="id" type="xs:string"/>
+  <xs:attribute name="tipo_clase" type="xs:string"/>
+  <xs:attribute name="fecha_publicacion" type="xs:date"/>
+</xs:complexType>
+
+<!-- Definición del elemento raíz y su estructura -->
+
+<xs:element name="biblioteca">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="libros">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="libro" type="LibroType" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="revistas">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="revista" type="RevistaType" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="periodicos">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="periodico" type="PeriodicoType" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>
+

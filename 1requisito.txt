@@ -1,0 +1,155 @@
+XML
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<biblioteca>
+  <libros>
+    <libro num_paginas="35" id="L0001" tipo_clase="novela">
+      <titulo>Titulo del Libro 1</titulo>
+      <capitulos>
+        <capitulo num_paginas="20">
+          <titulo>Capítulo 1</titulo>
+          <contenido enlace="enlace_capitulo_1.html"/>
+        </capitulo>
+        <capitulo num_paginas="15">
+          <titulo>Capítulo 2</titulo>
+          <contenido enlace="enlace_capitulo_2.html"/>
+        </capitulo>
+      </capitulos>
+      <indice enlace="enlace_indice.html"/>
+      <sinopsis>Sinopsis del Libro 1</sinopsis>
+    </libro>
+    <libro num_paginas="40" id="L0002" tipo_clase="infantil">
+      <titulo>Titulo del Libro 2</titulo>
+      <capitulos>
+        <capitulo num_paginas="10">
+          <titulo>Capítulo 1</titulo>
+          <contenido enlace="enlace_capitulo_1.html"/>
+        </capitulo>
+      </capitulos>
+      <indice enlace="enlace_indice.html"/>
+      <sinopsis>Sinopsis del Libro 2</sinopsis>
+    </libro>
+    <libro num_paginas="73" id="L0003" tipo_clase="didáctico">
+      <titulo>Titulo del Libro 3</titulo>
+      <capitulos>
+        <capitulo num_paginas="30">
+          <titulo>Capítulo 1</titulo>
+          <contenido enlace="enlace_capitulo_1.html"/>
+        </capitulo>
+        <capitulo num_paginas="25">
+          <titulo>Capítulo 2</titulo>
+          <contenido enlace="enlace_capitulo_2.html"/>
+        </capitulo>
+        <capitulo num_paginas="18">
+          <titulo>Capítulo 3</titulo>
+          <contenido enlace="enlace_capitulo_3.html"/>
+        </capitulo>
+      </capitulos>
+      <indice enlace="enlace_indice.html"/>
+      <sinopsis>Sinopsis del Libro 3</sinopsis>
+    </libro>
+  </libros>
+  <revistas>
+    <revista id="R0001" tipo_clase="informática">
+      <titulo>Titulo de la Revista 1</titulo>
+      <numero>1</numero>
+      <indice enlace="enlace_indice.html"/>
+      <secciones>
+        <seccion tipo="sección1" num_paginas="5">
+          <contenido enlace="enlace_seccion1.html"/>
+        </seccion>
+        <seccion tipo="sección2" num_paginas="8">
+          <contenido enlace="enlace_seccion2.html"/>
+        </seccion>
+      </secciones>
+    </revista>
+    <revista id="R0002" tipo_clase="corazón">
+      <titulo>Titulo de la Revista 2</titulo>
+      <numero>2</numero>
+      <indice enlace="enlace_indice.html"/>
+      <secciones>
+        <seccion tipo="sección1" num_paginas="7">
+          <contenido enlace="enlace_seccion1.html"/>
+        </seccion>
+      </secciones>
+    </revista>
+  </revistas>
+  <periodicos>
+    <periodico id="P0001" tipo_clase="nacional" fecha_publicacion="2023-05-11">
+      <secciones>
+        <seccion tipo="economica" num_paginas="10">
+          <articulo autor="Autor 1">
+            <contenido enlace="enlace_articulo_1.html"/>
+          </articulo>
+        </seccion>
+        <seccion tipo="opinion" num_paginas="8">
+          <articulo autor="Autor 2">
+            <contenido enlace="enlace_articulo_2.html"/>
+          </articulo>
+        </seccion>
+      </secciones>
+      <indice enlace="enlace_indice.html"/>
+    </periodico>
+    <periodico id="P0002" tipo_clase="internacional" fecha_publicacion="2023-05-10">
+      <secciones>
+        <seccion tipo="deportes" num_paginas="12">
+          <articulo autor="Autor 3">
+            <contenido enlace="enlace_articulo_3.html"/>
+          </articulo>
+        </seccion>
+        <seccion tipo="internacional" num_paginas="10">
+          <articulo autor="Autor 4">
+            <contenido enlace="enlace_articulo_4.html"/>
+          </articulo>
+        </seccion>
+      </secciones>
+      <indice enlace="enlace_indice.html"/>
+    </periodico>
+  </periodicos>
+</biblioteca>
+
+----------------------------------------------------------------------------------------------------------------------------------
+DTD
+-----------------------------------------------------------------------------------------------------------------------------
+<!DOCTYPE biblioteca [
+  <!ELEMENT biblioteca (libros, revistas, periodicos)>
+  <!ELEMENT libros (libro+)>
+  <!ELEMENT libro (titulo, capitulos, indice, sinopsis)>
+  <!ATTLIST libro num_paginas CDATA #REQUIRED>
+  <!ATTLIST libro id ID #REQUIRED>
+  <!ATTLIST libro tipo_clase CDATA #REQUIRED>
+  <!ELEMENT titulo (#PCDATA)>
+  <!ELEMENT capitulos (capitulo+)>
+  <!ELEMENT capitulo (titulo, contenido)>
+  <!ATTLIST capitulo num_paginas CDATA #REQUIRED>
+  <!ELEMENT sinopsis (#PCDATA)>
+  <!ELEMENT indice (#PCDATA)>
+  <!ELEMENT revistas (revista+)>
+  <!ELEMENT revista (titulo, numero, indice, secciones)>
+  <!ATTLIST revista id ID #REQUIRED>
+  <!ATTLIST revista tipo_clase CDATA #REQUIRED>
+  <!ELEMENT numero (#PCDATA)>
+  <!ELEMENT secciones (seccion+)>
+  <!ELEMENT seccion (contenido)>
+  <!ATTLIST seccion tipo CDATA #REQUIRED>
+  <!ATTLIST seccion num_paginas CDATA #REQUIRED>
+  <!ELEMENT contenido (#PCDATA)>
+  <!ATTLIST contenido enlace CDATA #REQUIRED>
+  <!ELEMENT periodicos (periodico+)>
+  <!ELEMENT periodico (secciones, indice)>
+  <!ATTLIST periodico id ID #REQUIRED>
+  <!ATTLIST periodico tipo_clase CDATA #REQUIRED>
+  <!ATTLIST periodico fecha_publicacion CDATA #REQUIRED>
+  <!ELEMENT secciones (seccion+)>
+  <!ELEMENT seccion (articulo)>
+  <!ATTLIST seccion tipo CDATA #REQUIRED>
+  <!ATTLLIST seccion num_paginas CDATA #REQUIRED>
+  <!ELEMENT articulo (contenido)>
+  <!ATTLIST articulo autor CDATA #REQUIRED>
+  <!ELEMENT contenido (#PCDATA)>
+  <!ATTLIST contenido enlace CDATA #REQUIRED>
+]>
+
+
+
+
